@@ -41,6 +41,7 @@ public class Voo {
 
     @Override
     public String toString() {
-        return rota + " : " + datahora.toString() + " [" +  duracao.toString() + "]";
+        return rota + " : " + datahora.toString() + " [" +  duracao.toString() + "] - "
+                + status;
     }
 }
