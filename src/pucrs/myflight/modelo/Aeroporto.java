@@ -22,4 +22,9 @@ public class Aeroporto {
 	public Geo getLocal() {
 		return loc;
 	}
+
+    @Override
+    public String toString() {
+        return codigo + " - " + nome + " [" + loc + "]";
+    }
 }

@@ -12,4 +12,15 @@ public class GerenciadorCias {
     public ArrayList<CiaAerea> listarTodas() {
         return new ArrayList<>(empresas);
     }
+
+    public void adicionar(CiaAerea cia1) {
+        empresas.add(cia1);
+    }
+
+    public CiaAerea buscarCodigo(String cod) {
+        for(CiaAerea cia: empresas)
+            if(cia.getCodigo().equals(cod))
+                return cia;
+        return null;
+    }
 }

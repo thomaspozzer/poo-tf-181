@@ -28,4 +28,10 @@ public class Rota {
 	public Aeronave getAeronave() {
 		return aeronave;
 	}
+
+    @Override
+    public String toString() {
+        return cia.getCodigo() + " - " + origem.getCodigo() + " -> " + destino.getCodigo()
+                + " ("  + aeronave.getCodigo() + ")";
+    }
 }

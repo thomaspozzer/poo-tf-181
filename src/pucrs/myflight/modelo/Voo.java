@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class Voo {
 	
-	public enum Status { CONFIRMADO, ATRASADO, CANCELADO };
+	public enum Status { CONFIRMADO, ATRASADO, CANCELADO }
 	
 	private LocalDateTime datahora;
 	private Duration duracao;
@@ -38,4 +38,9 @@ public class Voo {
 	public void setStatus(Status novo) {
 		this.status = novo;
 	}
+
+    @Override
+    public String toString() {
+        return rota + " : " + datahora.toString() + " [" +  duracao.toString() + "]";
+    }
 }
