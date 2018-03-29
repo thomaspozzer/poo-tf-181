@@ -1,6 +1,8 @@
 package pucrs.myflight.modelo;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Period;
 import java.util.ArrayList;
 
 public class GerenciadorVoos {
@@ -25,5 +27,25 @@ public class GerenciadorVoos {
            if(v.getDatahora().toLocalDate().equals(data))
                result.add(v);
        return result;
+    }
+
+    // Tarefa 1: listar os dados de vôos cuja origem é informada
+    public ArrayList<Voo> buscarOrigem(String cod) {
+        ArrayList<Voo> result = new ArrayList<>();
+        for(Voo v: voos)
+            if(v.getRota().getOrigem().getCodigo().equals(cod))
+                result.add(v);
+        return result;
+    }
+
+    // Tarefa 1: listar os dados de vôos que operam em determinado período do dia
+    public ArrayList<Voo> buscarPeriodo(LocalTime inicio, LocalTime fim) {
+        ArrayList<Voo> result = new ArrayList<>();
+        for(Voo v: voos) {
+            if(v.getDatahora().toLocalTime().compareTo(inicio) >= 0 &&
+                    v.getDatahora().toLocalTime().compareTo(fim) <= 0)
+                result.add(v);
+        }
+        return result;
     }
 }

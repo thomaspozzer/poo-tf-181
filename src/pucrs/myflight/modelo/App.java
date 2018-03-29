@@ -1,8 +1,8 @@
 package pucrs.myflight.modelo;
 
-import java.time.LocalDateTime;
-import java.time.temporal.TemporalAdjusters;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class App {
 
@@ -78,14 +78,36 @@ public class App {
         gerVoos.adicionar(new Voo(grulis, tardecedo, longo2));
         gerVoos.adicionar(new Voo(grulis, tardetarde, longo2));
 
+        System.out.println("Todos os vôos:\n");
         for(Voo v: gerVoos.listarTodos())
             System.out.println(v);
 
-		// Ex: criando objetos data e duração
-		//LocalDateTime datahora1 = LocalDateTime.of(2017, 8, 14, 22, 3);
-		//System.out.println("Data e hora: "+datahora1);
-		
-		//Duration duracao1 = Duration.ofMinutes(90); // 1:30
-		//System.out.println("Duração: "+duracao1);
+        // Tarefa 1: listar os vôos de determinada origem
+
+        System.out.println("\nVôos cuja origem é Guarulhos (gru)\n");
+        for(Voo v: gerVoos.buscarOrigem("GRU"))
+            System.out.println(v);
+
+        // Tarefa 2: mostrar a localização dos aeroportos que operam em determinado período do dia
+
+        LocalTime inicio = LocalTime.of(8, 0);
+        LocalTime fim    = LocalTime.of(9, 0);
+
+        System.out.println("\nVôos que ocorrem entre 7h e 9h\n");
+        for(Voo v: gerVoos.buscarPeriodo(inicio, fim)) {
+//            System.out.println(v);
+            Aeroporto origem = v.getRota().getOrigem();
+            System.out.println(origem.getNome() + ": " +origem.getLocal());
+        }
+
+        LocalTime inicio2 = LocalTime.of(9, 0);
+        LocalTime fim2    = LocalTime.of(16, 0);
+
+        System.out.println("\nVôos que ocorrem entre 9h e 16h\n");
+        for(Voo v: gerVoos.buscarPeriodo(inicio2, fim2)) {
+//            System.out.println(v);
+            Aeroporto origem = v.getRota().getOrigem();
+            System.out.println(origem.getNome() + ": " + origem.getLocal());
+        }
 	}
 }

@@ -2,6 +2,7 @@ package pucrs.myflight.modelo;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Voo {
 	
@@ -11,12 +12,15 @@ public class Voo {
 	private Duration duracao;
 	private Rota rota;
 	private Status status;
+	private DateTimeFormatter formatador;
 	
 	public Voo(Rota rota, LocalDateTime datahora, Duration duracao) {
 		this.rota = rota;
 		this.datahora = datahora;
 		this.duracao = duracao;
 		this.status = Status.CONFIRMADO; // default é confirmado
+        // Para formatar LocalDateTime de uma forma inteligível
+        this.formatador = DateTimeFormatter.ofPattern("dd/MMM/yyyy HH:mm");
 	}
 	
 	public Rota getRota() {
@@ -41,7 +45,7 @@ public class Voo {
 
     @Override
     public String toString() {
-        return rota + " : " + datahora.toString() + " [" +  duracao.toString() + "] - "
+        return rota + " : " + formatador.format(datahora) + " [" +  duracao + "] - "
                 + status;
     }
 }
