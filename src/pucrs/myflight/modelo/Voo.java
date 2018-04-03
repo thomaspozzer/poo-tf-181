@@ -22,6 +22,14 @@ public class Voo {
         // Para formatar LocalDateTime de uma forma inteligível
         this.formatador = DateTimeFormatter.ofPattern("dd/MMM/yyyy HH:mm");
 	}
+
+	public Voo(Rota rota, Duration duracao) {
+
+	    this(rota,
+          LocalDateTime.of(2018,4,3,22,00,0),
+          duracao);
+//	    this(rota, LocalDateTime.now(), duracao);
+    }
 	
 	public Rota getRota() {
 		return rota;

@@ -49,6 +49,12 @@ public class App {
 		Aeroporto lis = gerAero.buscarCodigo("LIS");
 		Aeroporto mia = gerAero.buscarCodigo("MIA");
 
+        System.out.println("Distância POA->GRU: "+
+            Geo.distancia(poa.getLocal(), gru.getLocal()));
+
+        System.out.println("Distâcia GRU->POA: " +
+            gru.getLocal().distancia(poa.getLocal()));
+
 		GerenciadorRotas gerRotas = new GerenciadorRotas();
 
 		Rota poagru = new Rota(latam, poa, gru, b733);
@@ -77,6 +83,7 @@ public class App {
         gerVoos.adicionar(new Voo(grumia, manhacedo, longo1));
         gerVoos.adicionar(new Voo(grulis, tardecedo, longo2));
         gerVoos.adicionar(new Voo(grulis, tardetarde, longo2));
+        gerVoos.adicionar(new Voo(poagru, curto)); // agora!
 
         System.out.println("Todos os vôos:\n");
         for(Voo v: gerVoos.listarTodos())
