@@ -1,6 +1,7 @@
 package pucrs.myflight.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GerenciadorAeronaves {
 
@@ -23,5 +24,9 @@ public class GerenciadorAeronaves {
             if(a.getCodigo().equals(codigo))
                 return a;
         return null;
+    }
+
+    public void ordenarDescricao() {
+        Collections.sort(avioes);
     }
 }

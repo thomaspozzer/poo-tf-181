@@ -21,8 +21,14 @@ public class App {
 		gerAvioes.adicionar(new Aeronave("73G", "Boeing 737-400", 126));
 		gerAvioes.adicionar(new Aeronave("380", "Airbus Industrie A380", 644));
 		gerAvioes.adicionar(new Aeronave("764", "Boeing 767-400", 304));
+		gerAvioes.ordenarDescricao();
+        // Listando em ordem alfabética de descrição:
+        System.out.println("\nAeronaves:");
+        for(Aeronave av: gerAvioes.listarTodas())
+            System.out.println(av);
+        System.out.println();
 
-		GerenciadorAeroportos gerAero = new GerenciadorAeroportos();
+        GerenciadorAeroportos gerAero = new GerenciadorAeroportos();
 
 		gerAero.adicionar(new Aeroporto("POA", "Salgado Filho Intl",
                 new Geo(-29.9939, -51.1711)));
