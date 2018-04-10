@@ -27,6 +27,13 @@ public class GerenciadorAeronaves {
     }
 
     public void ordenarDescricao() {
-        Collections.sort(avioes);
+        //Collections.sort(avioes);
+        avioes.sort( (Aeronave a1, Aeronave a2) ->
+            a1.getDescricao().compareTo(a2.getDescricao()));
+    }
+
+    public void ordenarCodigo() {
+        avioes.sort( (Aeronave a1, Aeronave a2) ->
+            a1.getCodigo().compareTo(a2.getCodigo()));
     }
 }
