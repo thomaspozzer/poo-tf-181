@@ -32,6 +32,12 @@ public class App {
                 new Geo(38.7742, -9.1342)));
 		gerAero.adicionar(new Aeroporto("MIA", "Miami Intl Airport",
                 new Geo(25.7933, -80.2906)));
+		gerAero.ordenarNomes();
+
+        System.out.println("\nAeroportos ordenados por nome:\n");
+        for(Aeroporto a: gerAero.listarTodos())
+            System.out.println(a);
+        System.out.println();
 
 		// Para facilitar a criação de rotas:
 
@@ -62,10 +68,16 @@ public class App {
         Rota grumia = new Rota(tap, gru, mia, a380);
         Rota grulis = new Rota(tap, gru, lis, a380);
 
+        gerRotas.adicionar(grumia);
+        gerRotas.adicionar(grulis);
 		gerRotas.adicionar(poagru);
 		gerRotas.adicionar(grupoa);
-		gerRotas.adicionar(grumia);
-		gerRotas.adicionar(grulis);
+		gerRotas.ordenarCias();
+
+        System.out.println("\nRotas ordenadas:\n");
+        for(Rota r: gerRotas.listarTodas())
+            System.out.println(r);
+        System.out.println();
 
 		LocalDateTime manhacedo = LocalDateTime.of(2018, 3, 29, 8, 0);
         LocalDateTime manhameio = LocalDateTime.of(2018, 4, 4, 10, 0);
