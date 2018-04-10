@@ -15,6 +15,28 @@ public class GerenciadorRotas {
         Collections.sort(rotas);
     }
 
+    public void ordenarNomesCias() {
+        rotas.sort( (Rota r1, Rota r2) ->
+          r1.getCia().getNome().compareTo(
+          r2.getCia().getNome()));
+    }
+
+    public void ordenarNomesAeroportos() {
+        rotas.sort( (Rota r1, Rota r2) ->
+                r1.getOrigem().getNome().compareTo(
+                r2.getOrigem().getNome()));
+    }
+
+    public void ordenarNomesAeroportosCias() {
+        rotas.sort( (Rota r1, Rota r2) -> {
+           int result = r1.getOrigem().getNome().compareTo(
+                   r2.getOrigem().getNome());
+           if(result != 0)
+               return result;
+           return r1.getCia().getNome().compareTo(
+                   r2.getCia().getNome());
+        });
+    }
     public void adicionar(Rota r) {
         rotas.add(r);
     }

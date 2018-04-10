@@ -79,7 +79,8 @@ public class App {
         gerRotas.adicionar(grulis);
 		gerRotas.adicionar(poagru);
 		gerRotas.adicionar(grupoa);
-		gerRotas.ordenarCias();
+//		gerRotas.ordenarCias();
+		gerRotas.ordenarNomesAeroportosCias();
 
         System.out.println("\nRotas ordenadas:\n");
         for(Rota r: gerRotas.listarTodas())
