@@ -98,13 +98,15 @@ public class App {
 
         GerenciadorVoos gerVoos = new GerenciadorVoos();
 
+        gerVoos.adicionar(new Voo(poagru, curto)); // agora!
+        gerVoos.adicionar(new Voo(grulis, tardecedo, longo2));
+        gerVoos.adicionar(new Voo(grulis, tardetarde, longo2));
         gerVoos.adicionar(new Voo(poagru, manhacedo, curto));
         gerVoos.adicionar(new Voo(grupoa, manhameio, curto));
         gerVoos.adicionar(new Voo(grumia, manhacedo, longo1));
-        gerVoos.adicionar(new Voo(grulis, tardecedo, longo2));
-        gerVoos.adicionar(new Voo(grulis, tardetarde, longo2));
-        gerVoos.adicionar(new Voo(poagru, curto)); // agora!
 
+//        gerVoos.ordenarDataHoraDuracao();
+        gerVoos.ordenarDataHoraDuracao();
         System.out.println("Todos os vôos:\n");
         for(Voo v: gerVoos.listarTodos())
             System.out.println(v);
