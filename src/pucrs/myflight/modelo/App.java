@@ -105,9 +105,11 @@ public class App {
         gerVoos.adicionar(new Voo(grupoa, manhameio, curto));
         gerVoos.adicionar(new Voo(grumia, manhacedo, longo1));
 
-        // Vôo com escalas, usando o construtor novo
-        VooEscalas vooEsc = new VooEscalas(poagru, grulis,
+        // Vôo com várias escalas
+        VooEscalas vooEsc = new VooEscalas(poagru,
             manhacedo, longo2);
+        vooEsc.adicionarRota(grulis);
+
         // O toString vai usar o método implementado
         // em VooEscalas, mas reutilizando (reuso) o método
         // original de Voo

@@ -2,29 +2,46 @@ package pucrs.myflight.modelo;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class VooEscalas extends Voo {
 
-    private Rota rotaFinal;
+    private ArrayList<Rota> rotas;
 
-    public VooEscalas(Rota rota, Rota rotaFinal,
+    public VooEscalas(Rota rota,
          LocalDateTime datahora, Duration duracao) {
        super(rota, datahora, duracao);
+       rotas = new ArrayList<>();
 //       this.rota = rota;
 //       this.datahora = datahora;
 //       this.duracao = duracao;
-       this.rotaFinal = rotaFinal;
+//       this.rotaFinal = rotaFinal;
     }
 
-    public Rota getRotaFinal() {
-        return rotaFinal;
+    public void adicionarRota(Rota nova) {
+        rotas.add(nova);
     }
+
+    public int getTotalRotas() {
+        return rotas.size();
+    }
+
+    public ArrayList<Rota> getRotas() {
+        return new ArrayList<>(rotas);
+    }
+
+//    public Rota getRotaFinal() {
+//        return rotaFinal;
+//    }
 
     @Override
     public String toString() {
-        return super.toString() + " -> " + rotaFinal;
-//        return getRota() + "->" + rotaFinal + " : " +
-//                getDatahora() + " [" +  getDuracao() + "] - "
-//                + getStatus();
+        String aux = super.toString();
+        for(Rota r: rotas)
+            aux += "\n   " + r;
+        return aux;
     }
+
+
+
 }
