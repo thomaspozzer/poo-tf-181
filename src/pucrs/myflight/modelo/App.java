@@ -110,6 +110,8 @@ public class App {
             manhacedo, longo2);
         vooEsc.adicionarRota(grulis);
 
+        gerVoos.adicionar(vooEsc);
+
         // O toString vai usar o método implementado
         // em VooEscalas, mas reutilizando (reuso) o método
         // original de Voo
@@ -119,7 +121,14 @@ public class App {
         gerVoos.ordenarDataHoraDuracao();
         System.out.println("Todos os vôos:\n");
         for(Voo v: gerVoos.listarTodos())
+        {
+            if(v instanceof VooEscalas) {
+                System.out.println(">>> Vôo com escalas!");
+                VooEscalas vaux = (VooEscalas) v;
+                System.out.println("Escalas: "+vaux.getTotalRotas());
+            }
             System.out.println(v);
+        }
 
         // Tarefa 1: listar os vôos de determinada origem
 

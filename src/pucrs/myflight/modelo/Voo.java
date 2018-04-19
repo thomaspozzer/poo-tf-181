@@ -13,7 +13,7 @@ public class Voo {
 	private Rota rota;
 	private Status status;
 	private DateTimeFormatter formatador;
-	
+
 	public Voo(Rota rota, LocalDateTime datahora, Duration duracao) {
 		this.rota = rota;
 		this.datahora = datahora;
@@ -57,3 +57,4 @@ public class Voo {
                 + status;
     }
 }
+
