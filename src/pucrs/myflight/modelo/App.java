@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class App {
 
@@ -15,9 +16,13 @@ public class App {
             gerCias.carregaDados("airlines.dat");
         } catch (IOException e) {
             System.out.println("Não foi possível ler airlines.dat!");
-            System.exit(1);
+//            System.exit(1);
         }
-        System.out.println("Total cias:"+gerCias.listarTodas().size());
+        ArrayList<CiaAerea> todasCias = gerCias.listarTodas();
+        System.out.println("Total cias:"+todasCias.size());
+        for(CiaAerea cia: todasCias)
+            System.out.println(cia.getCodigo()+" - "+cia.getNome());
+
 		/*
 		gerCias.adicionar(new CiaAerea("JJ", "LATAM Linhas Aéreas"));
 		gerCias.adicionar(new CiaAerea("G3", "Gol Linhas Aéreas S/A"));
