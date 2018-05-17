@@ -1,9 +1,15 @@
 package pucrs.myflight.modelo;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GerenciadorCias {
-	private ArrayList<CiaAerea> empresas;
+    private ArrayList<CiaAerea> empresas;
 
     public GerenciadorCias() {
         this.empresas = new ArrayList<>();
@@ -13,13 +19,29 @@ public class GerenciadorCias {
         return new ArrayList<>(empresas);
     }
 
+    public void carregaDados(String nomeArq) throws IOException {
+        Path path = Paths.get(nomeArq);
+        try (Scanner sc = new Scanner(Files.newBufferedReader(path, Charset.forName("utf8")))) {
+            sc.useDelimiter("[;\n]"); // separadores: ; e nova linha
+            String header = sc.nextLine(); // pula cabeçalho
+            String cod, nome;
+            while (sc.hasNext()) {
+                cod = sc.next();
+                nome = sc.next();
+                CiaAerea nova = new CiaAerea(cod, nome);
+                adicionar(nova);
+                //System.out.format("%s - %s (%s)%n", nome, data, cpf);
+            }
+        }
+    }
+
     public void adicionar(CiaAerea cia1) {
         empresas.add(cia1);
     }
 
     public CiaAerea buscarCodigo(String cod) {
-        for(CiaAerea cia: empresas)
-            if(cia.getCodigo().equals(cod))
+        for (CiaAerea cia : empresas)
+            if (cia.getCodigo().equals(cod))
                 return cia;
         return null;
     }

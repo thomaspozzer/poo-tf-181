@@ -1,5 +1,6 @@
 package pucrs.myflight.modelo;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -10,10 +11,19 @@ public class App {
 
 		GerenciadorCias gerCias = new GerenciadorCias();
 
+        try {
+            gerCias.carregaDados("airlines.dat");
+        } catch (IOException e) {
+            System.out.println("Não foi possível ler airlines.dat!");
+            System.exit(1);
+        }
+        System.out.println("Total cias:"+gerCias.listarTodas().size());
+		/*
 		gerCias.adicionar(new CiaAerea("JJ", "LATAM Linhas Aéreas"));
 		gerCias.adicionar(new CiaAerea("G3", "Gol Linhas Aéreas S/A"));
 		gerCias.adicionar(new CiaAerea("TP", "TAP Portugal"));
 		gerCias.adicionar(new CiaAerea("AD", "Azul Linhas Aéreas"));
+		*/
 
 		GerenciadorAeronaves gerAvioes = new GerenciadorAeronaves();
 
