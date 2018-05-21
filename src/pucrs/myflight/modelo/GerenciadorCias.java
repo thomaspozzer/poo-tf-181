@@ -48,4 +48,11 @@ public class GerenciadorCias {
 //                return cia;
 //        return null;
     }
+
+    public CiaAerea buscarNome(String nome) {
+        for(CiaAerea cia: empresas.values())
+           if(cia.getNome().equals(nome))
+               return cia;
+        return null;
+    }
 }
