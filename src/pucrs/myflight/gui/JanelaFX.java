@@ -104,8 +104,20 @@ public class JanelaFX extends Application {
 
 		gerCias = new GerenciadorCias();
 		gerAero = new GerenciadorAeroportos();
-		gerRotas = new GerenciadorRotas();
+
 		gerAvioes = new GerenciadorAeronaves();
+		gerRotas = new GerenciadorRotas();
+
+		try {
+			gerCias.carregaDados("airlines.dat");
+			gerAero.carregaDados("airports.dat");
+			gerAvioes.carregaDados("equipment.dat");
+			gerRotas.carregaDados("routes.dat",gerAvioes,gerAero,gerCias);
+		}
+		catch (IOException e) {
+			System.out.println("erro na abertura de arrquivos: "+ e.getMessage());
+		}
+
 	}
 
 	private void consulta1() {
